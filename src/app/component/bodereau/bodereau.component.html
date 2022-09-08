@@ -1,0 +1,248 @@
+<div class="w-full  justify-center  px-4 h-full bgimg">
+    <div class="w-full lg:w-10/12 px-4">
+        <div
+        class="relative bgimg flex flex-row min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0"
+      >
+
+      <div class="bg-blueGray-200  w-full px-4 lg:px-10 py-10 pt-0  lg:w-4/12">
+        <div class="w-full">
+
+            <div class="relative w-full mb-1">
+                <mat-form-field>
+                    <div>
+                        <mat-toolbar>
+                        <!-- Display files names  -->
+                        
+                            <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+                    
+                            <!-- Browse Button -->
+                        
+                            <button mat-flat-button 
+                                class="bg-red-800  text-white text-xs font-bold uppercase
+                                    rounded mr-2">
+                                Parcourir
+                            </button>
+                        </mat-toolbar>
+                    
+                        <!-- Fetch selected filed on change -->
+
+                        <input type="file" #fileInput id="uploadFileqr" (change)="uploadFileEvtQr1($event)" name="uploadFileqr" 
+                        accept="application/pdf" />
+                    
+                      <!--  <input type="file" #fileInput id="uploadFileqr" (change)="uploadFileEvtQr1($event)" name="uploadFileqr" multiple 
+                        accept="text/xml,.pdf,image/*" />-->
+                    </div>
+                </mat-form-field>
+                <!--<button mat-flat-button color="accent" (click)="loadDocx()">
+                    Afficher
+                </button>-->
+            </div>
+ <!--
+            <div class="relative w-full mb-3">
+                <button mat-flat-button 
+                    class="bg-red-800  text-white text-xs font-bold uppercase
+                        rounded mr-2  mt-2">
+                    Numériser
+                </button>
+            </div>
+      
+            <div class="w-full px-4" >
+                <div class="relative w-full mb-1">
+                    
+               
+                </div>
+            </div>  -->
+            <h4  class="text-blueGray-700 .text-xs font-bold title-imp">Documents à traiter</h4> <br>
+                <button mat-raised-button  type="button" [matBadge]="charge" matBadgePosition="after" matBadgeColor="warn" 
+                [matBadgeHidden]="hidden" matBadgeSize="medium" (click)="numerize()"
+                    class="bg-red-800  text-white text-xs font-bold uppercase
+                        rounded mr-2  mt-1">
+                    <i title="Lancer indexation"  aria-hidden="true"></i>
+                    Indexer
+                </button>
+            <div class="w-full bg-white px-4 custom-doc-scroll-bar mt-1 flex-auto" >
+               <!-- PROPRIETE-->
+               
+               <div class="flex wrap " *ngFor="let qrImage of qrImageCollection; let isLast = last; let index = index">   
+                <!--    <a id='anchor-qrdoc'  class="text-black text-xs font-bold uppercase 
+                        rounded mr-2 m-1" href = "/body" (click)="onLoadQRDoc(qrImage.title);"><span>{{qrImage.title}}</span>
+                        <span [ngStyle]="{'color': getColor(qrImage.state)}">&nbsp;&nbsp;Prêt</span>
+                    </a>
+                -->
+
+
+
+               
+                <!--    <button type="button" [ngStyle]="{'border-color': getColor(qrImage.state)}" [ngClass] = "{'active': isLast}"
+                    (click)="onLoadQRDoc(qrImage.title);" 
+                    class="bg-blueGray-200  border-blueGray-500 text-black text-xs btn_num  
+                        rounded mr-2  m-1">
+                        {{(qrImage.title.length > 15) ? (qrImage.title | slice:17:27) : (qrImage.title)}}<span [ngStyle]="{'color': getColor(qrImage.state)}">&nbsp;&nbsp;Prêt</span>
+                    </button> -->
+
+                    <button type="button" [ngStyle]="{'border-color': getColor(qrImage.state)}"  [ngClass]="currButtonIndex ==  index? 'active': ''" 
+                    (click)="onLoadQRDoc(qrImage.title, index);" 
+                    class="bg-blueGray-200  border-blueGray-500 text-black text-xs btn_num  
+                        rounded mr-2  m-1">
+                        {{(qrImage.title.length > 15) ? (qrImage.title | slice:17:27) : (qrImage.title)}}
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="" id="btnOne" [hidden] = "to_index" title="Supprimer ce dossier." 
+                    (click)="onSupp(qrImage.title);" >
+                    <i class="fa fa-times-circle" style="font-size:24px;color:red"></i>
+                     
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="" id="btnTwo" [hidden] = "to_index" title="Valider les Proprietés." 
+                    (click)="onUpdate(qrImage.title);" >
+                    <i class="fa fa-check-circle" style="font-size:24px;color:green"></i>
+                       
+                    </button>
+
+
+                </div>
+            </div>
+
+            <h4  class="text-blueGray-700 .text-xs font-bold title-imp">Renseigner les Proprietés</h4> <br>
+            <div class="w-full bg-white px-4 custom-scroll-bar mt-1 flex-auto" >
+               <!--
+                    <div class="relative w-full mt-2">
+                        <mat-form-field class="" appearance="fill" >
+                            <mat-label>Type de document</mat-label>
+                          <input matInput 
+                                    aria-label="State" [matAutocomplete]="auto" [formControl]="searchTypes">
+                            <mat-autocomplete #auto="matAutocomplete" >
+                              <mat-option (onSelectionChange)="onChangeTypeQR($event)" style="font-size: 10px;" 
+                                      *ngFor="let p of filteredTypes" [(value)]="p.name">
+                                <span >{{p.name}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          
+                          </mat-form-field> 
+                    </div>
+                -->
+                <!--
+                    <div class="relative w-full mt-2">
+                        <mat-form-field class="" appearance="fill" >
+                            <mat-label>Type de document</mat-label>
+                            <mat-select [formControl]="searchTypes">
+                                <mat-option (onSelectionChange)="onChangeTypeQR($event)" style="font-size: 10px;" 
+                                        *ngFor="let p of filteredTypes" [value]="p.name">
+                                    <span >{{p.name}}</span>
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field> 
+                    </div>
+                
+-->
+                 <div class="relative w-full mt-2">
+                    <mat-form-field class="" appearance="fill" >
+                        <mat-label>Type de document</mat-label>
+                        <mat-select [(value)]="selectedType">
+                            <mat-option style="font-size: 10px;" 
+                                    *ngFor="let p of filteredTypes" [value]="p" >
+                                <span >{{p.name}}</span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+ <!--
+                <div class="relative w-full mt-2">
+                    <mat-form-field class="" appearance="fill" >
+                        <mat-label>Select Profile</mat-label>
+                        <mat-select [(value)]="selectedProfile">
+                            <mat-option  *ngFor="let p of profiles" [value]="p" >
+                                    
+                                {{p.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+<div *ngIf="selectedProfile">{{selectedProfile.id}} - {{selectedProfile.name}}</div>
+
+-->
+                <div class="flex wrap " *ngFor="let propriete of all_qrpropriete">
+                    <app-properties-form [properties]="propriete"></app-properties-form>
+                </div>
+
+                <div  class="w-full lg:w-11/12 flex justify-end py-2 mt-2" >
+                 <button mat-raised-button color="primary"  class="ml-3" 
+                     
+                        (click)="attachDocx()" [disabled] = "split_in" >
+                        Ajouter
+                 </button>
+               
+                </div>
+              
+            </div>
+            
+        </div>
+      
+   </div>
+
+   <div class="w-full    px-4 pt-0 lg:w-10/12">
+    <!--<div class="md:w-9/12bgimg ">-->
+        
+        <div class="w-full flex justify-end m-1">
+            <button
+                class="bg-red-800 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150"
+                type="button" 
+                (click)="split()" [disabled] = "image_in" [hidden] = "instance"
+            >
+                <i title="Decoupage" class="fas fa-magic" aria-hidden="true"></i>
+                Split
+            </button>
+            <button
+                class="bg-red-800 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150"
+                type="button" 
+                (click)="sendToFusion()" [disabled] = "image_in" [hidden] = "instance"
+            >
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+              Fusion
+            </button>
+            
+            <button
+                class="bg-orange-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150"
+                type="button" 
+                (click)="sendRToAcs()" [disabled] = "image_in" [hidden] = "!instance" 
+            >
+           
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            Envoyer
+            </button>
+
+           
+        </div>
+       <!--   <app-document-viewer [imageCollection] =flex-auto "imgCollection1">class="w-full bg-blueGray-900 flex content-center img-scroll-bar items-center pt-2 pb-2 justify-center h-full"</app-document-viewer>-->
+       
+      <div class="row bg-blueGray-600 h-full" >     
+           <div *ngFor = "let dataimage of qrRImageCollection"  [hidden] = "typepdf" 
+                class="block"><span id='anchor' [ngClass] = "qrRImageCollection.length > 1 ? 'show':'hidden'" class="text-white text-xs font-bold uppercase
+                rounded mr-2" href = "#" >{{dataimage.filename}} &nbsp;&nbsp;<input type="checkbox" (change)="onChecked(dataimage, $event)"></span>
+                <img src="{{dataimage.olfilename}}" width="500px" >
+           </div> 
+           <!-- (click)="onLoadQRDoc(dataimage.filename);"-->
+
+           <div  *ngFor = "let dataimage of qrRImageCollection" class="block" [hidden] = "!typepdf" >
+                <pdf-viewer [src]="dataimage.olfilename"
+                    [zoom]="0.5" 
+                    [autoresize] = "true" 
+                ></pdf-viewer>
+          </div> 
+
+     </div>
+<!--
+     <div class="row bg-blueGray-600 h-full">     
+        <div class="block">
+            <img src="{{mergeimage}}" width="500px">
+        </div> 
+    </div>
+
+-->         
+   
+    <!--</div>-->
+    </div>
+
+      </div>
+    </div>
+</div>

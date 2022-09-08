@@ -1,0 +1,79 @@
+<div class="w-full flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+      <div class="main flex-auto px-4 lg:px-10 py-10 pt-6 small justify-content-center">
+    <!--
+            <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                CONFIGURATIONS
+            </h6>-->
+            <!--<app-list-docx></app-list-docx>-->
+
+        
+             
+              <ul class="col-md-12 top-level-menu">
+                  
+                  <li>
+                      <a [routerLink]="['/configs/consultation']" 
+                          routerLinkActive="active" 
+                          > Visualiser documents 
+                      </a>
+                      
+                  </li>
+                <!--
+                  <li>
+                      <a [routerLink]="['/configs/parameter']" 
+                      routerLinkActive="active" 
+                      > Parametrages 
+                      </a> 
+                  </li>
+                -->
+                  <li>
+                    <a 
+                   
+                    > Parametrages 
+                    </a> 
+                    <ul class="second-level-menu" >
+                        <li>
+                            <a [routerLink]="['/configs/properties']" 
+                            routerLinkActive="active"  
+                                > Gestion type document 
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/configs/service']" 
+                            routerLinkActive="active"  
+                                > Paramètres generaux 
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a [routerLink]="['/configs/properties']" 
+                            routerLinkActive="active"  
+                                > Gestion du robot 
+                            </a>
+                        </li>--> 
+                        <!--<li>
+                            <a [routerLink]="['/consultation/reporting']" 
+                            routerLinkActive="active"  
+                                > Reporting dossiers 
+                            </a>
+                        </li>--> 
+            
+                    </ul>
+                  </li>
+              </ul>
+      
+        
+          
+
+
+
+
+           
+    
+        </div>
+    </div>   
+   </div>
+</div>
+

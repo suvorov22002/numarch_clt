@@ -1,0 +1,82 @@
+<div class="container-fluid">
+<div class="row main justify-content-center">
+   
+
+    <ul class="col-md-12 top-level-menu">
+        
+        <li *ngxPermissionsOnly="['NUMARCH_PROCESS','NUMARCH_ADMIN']">
+            <a 
+            routerLinkActive="active" 
+            > Indexation
+            </a> 
+            <ul class="second-level-menu" >
+                <li *ngxPermissionsOnly="['NUMARCH_QRCODE','NUMARCH_ADMIN']">
+                    <a [routerLink]="['body']" [queryParams] = "{qr:'code'}"
+                    
+                        > Documents QRCode
+                    </a>
+                </li>
+                <li *ngxPermissionsOnly="['NUMARCH_SIMPLE','NUMARCH_ADMIN']">
+                    <a [routerLink]="['/body']" [queryParams] = "{qr:'classic'}"
+                  
+                        > Documents Classiques
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+       
+        <li *ngxPermissionsOnly="['NUMARCH_VISUAL','NUMARCH_ADMIN']">
+            <a [routerLink]="['/configs/consultation']" 
+            routerLinkActive="active" 
+            > Visualiser documents
+            </a> 
+        </li>
+
+        <li *ngxPermissionsOnly="['NUMARCH_PARAM','NUMARCH_ADMIN']">
+            <a 
+            routerLinkActive="active" 
+            > Parametrages 
+            </a> 
+            <ul class="second-level-menu" >
+                <li>
+                    <a [routerLink]="['/configs/properties']" 
+                    routerLinkActive="active"  
+                        > Gestion type document 
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/configs/service']" 
+                    routerLinkActive="active"  
+                        > Paramètres generaux
+                    </a>
+                </li>
+            </ul>
+        </li>
+<!--
+        <li>
+            <a [routerLink]="['/parametre']" 
+            routerLinkActive="active" 
+            > Paramètres
+            </a> 
+            <ul class="second-level-menu" >
+                <li>
+                    <a [routerLink]="['/parametre']" 
+                    routerLinkActive="active"  
+                        > Paramètres generaux
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/historiques']" 
+                    routerLinkActive="active"  
+                        > Traces operations
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+    -->
+    </ul>
+    
+</div>
+</div>

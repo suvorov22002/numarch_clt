@@ -1,0 +1,78 @@
+<!--<app-configurations></app-configurations>-->
+<div class="row justify-center" style="margin-top: 2%;" >
+    <div class="col-md-10" style="font-size: 13px !important" >
+<!--<div class="w-full flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >-->
+      <p-table [columns]="cols" [value]="datas" styleClass="p-datatable-striped"
+      [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" pageLinks="3" 
+      
+      >
+      <ng-template pTemplate="header" let-columns>
+          <tr>
+              <th style="width: 20%;">Reference</th>
+              <th style="width: 15%;">Date</th>
+           <!--   <th style="width: 25%;">Document</th> -->
+           <!--    <th style="width: 20%;">Description</th>-->
+              <th style="width: 10%;">Utilisateur</th> 
+              <th style="width: 5%;">Statut</th>
+              <th style="width: 15%;">Metadonnees</th>
+              <th style="width: 10%;">Envoyer/Consulter</th> 
+          <!--    <th *ngFor="let col of columns">
+                  {{col.header}}
+              </th>-->
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data let-columns="columns">
+          <tr [pSelectableRow]="data">
+              <td>{{data.reference}}</td>
+              <td>
+              {{data.dateEnvoi | date: 'short'}}
+              </td>
+             <!--  <td>{{data.name}}</td> -->
+            <!--   <td> {{data.title}}  </td>-->
+              <td>{{data.uti}}</td>
+              <td> 
+                <span *ngIf="data.traiter" style="color: green;" >
+                    <i class="fa fa-check"></i>
+                </span>
+                <span *ngIf="!data.traiter" style="color: red;" >
+                    <i class="fa fa-times"></i>
+                </span>
+                
+              </td>
+              <td>
+                    <button  (click)="view(data)" 
+                    class="btn" >
+                        <i class="fa fa-eye"></i>
+                    </button>
+              </td>
+              <td  style="color:blue;" ><a href={{data.url}} target="_blank" 
+                title="Accedez au document dans ACS" [hidden] = "!data.traiter">
+                    <!--<mat-icon>open_in_new</mat-icon>-->
+                    <i class="pi pi-external-link"></i>
+                    </a>
+
+                    <button  (click)="sendToAlfresco(data)" 
+                    class="btn" [hidden] = "data.traiter">
+                     <!--   <i class="fa fa-envelope"></i> -->
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+              </td>
+         
+      
+          </tr>
+      </ng-template>
+      <!--   <ng-template pTemplate="summary">
+          <div >
+              {{selectedAct ? selectedAct.reference : 'none'}}
+          </div>
+      </ng-template> -->
+      </p-table>
+
+      </div>   
+  </div>
+<!--</div>-->
+

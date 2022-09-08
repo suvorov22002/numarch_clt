@@ -1,0 +1,10 @@
+.mat-icon {
+  transform: scale(2);
+}
+.content-full-width {
+  width: 100%;
+}
+.date-mat-form-field {
+  width: 198px !important;
+  font-size: 13px !important;
+}

@@ -1,0 +1,90 @@
+<!--<form #customForm="ngForm" >-->
+<form  >
+    <div class="">
+        
+        <div class="w-full lg:w-3/12">
+            <div class="relative w-full" *ngIf="obj.properties.dataType == 'TEXT'">
+                  <mat-form-field  appearance="outline">
+                  <mat-label>{{obj.properties.title}}</mat-label>
+                  <input 
+                    matInput 
+                    style="padding: 0;"
+                    [formControl]="control"
+                    [name]="obj.properties.title"
+                    value="{{obj.valeur}}"
+                    [type]="type" 
+                    [ngModel]="obj.valeur" (ngModelChange)="obj.valeur = $event.toUpperCase()"
+                    required
+                  > 
+                  <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="">
+            <div class="relative w-full" *ngIf="obj.properties.dataType == 'DATE'">
+              <mat-form-field  class="date-mat-form-field" appearance="outline">
+                <mat-label>{{obj.properties.title}}</mat-label>
+                <input 
+                    matInput autocomplete="off" 
+                    style="padding: 0;" 
+                    [matDatepicker]="picker" 
+                    name="date" 
+                   
+                    [formControl]="control"
+                    
+                > 
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker [startAt]="date" #picker></mat-datepicker>
+                <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+
+
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12">
+            <div class="relative w-full" *ngIf="obj.properties.dataType == 'OPTION'">
+               <mat-form-field  appearance="outline">
+                <mat-label>{{obj.properties.title}}</mat-label>
+                <input 
+                    matInput 
+                    style="padding: 0;"
+                   
+                    [name]="obj.properties.title"
+                    value="{{obj.valeur}}"
+                    required = {{obj.properties.mandatory}} 
+                    [formControl]="control"
+                    
+                > 
+                <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12">
+            <div class="relative w-full" *ngIf="obj.properties.dataType == 'NUMBER'">
+                <mat-form-field  appearance="outline">
+                <mat-label>{{obj.properties.title}}</mat-label>
+                <input 
+                    matInput 
+                    style="padding: 0;"
+                    [formControl]="control"
+                    [name]="obj.properties.title"
+                    value="{{obj.valeur}}"
+                    required = {{obj.properties.mandatory}} 
+                > 
+                <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12">
+            <div class="relative w-full" *ngIf="obj.properties.dataType == 'CONTENT'"> 
+                    <mat-form-field  appearance="outline"> 
+                    <mat-label>{{obj.properties.title}}</mat-label> 
+                    <textarea matInput [formControl]="control"  [name]="obj.properties.title" required
+                    value="{{obj.valeur}}"></textarea> 
+                    <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+   </div>
+</form>

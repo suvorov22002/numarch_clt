@@ -1,0 +1,14 @@
+/*.custom-scroll-bar{
+    height:70vh;
+    overflow-y:scroll;
+}
+*/
+.document-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.document-full-width {
+width: 100%;
+}

@@ -1,0 +1,15 @@
+:host::ng-deep .p-datatable .p-datatable-tbody>tr {
+    font-size: 12px !important;
+    text-align: center !important;
+}
+
+:host::ng-deep .p-datatable .p-datatable-tbody>tr>td {
+    padding: 0px !important;
+    text-align: center !important;
+    word-wrap:break-word; /*old browsers*/
+    overflow-wrap:break-word;
+}
+
+:host::ng-deep .p-datatable .p-datatable-thead>tr>th {
+    text-align: center !important;
+}

@@ -1,0 +1,27 @@
+/*@import '~@angular/material/theming';*/
+
+.bottom {
+    position:absolute;                 
+    bottom:0;                         
+    right:0;                          
+}
+
+.header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.brand > img{
+  height: 25px;
+  width: auto;
+}
+
+.menu{
+  margin-left: 20px;
+}
+
+.flex-spacer{
+  flex-grow:1;
+}

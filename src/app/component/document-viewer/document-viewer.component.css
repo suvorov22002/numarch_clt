@@ -1,0 +1,13 @@
+:host {
+    position: relative;
+    display: block;
+    height: 100%;
+   /* border: 1px solid lime;*/
+  }
+
+  .center {
+    margin: auto;
+    width: 100%;
+    /*border: 5px solid #000000;*/
+    padding: 10px;
+    }

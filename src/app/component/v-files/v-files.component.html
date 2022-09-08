@@ -1,0 +1,220 @@
+<div class="w-full  justify-center  px-4 h-full bgimg">
+    <div class="w-full lg:w-10/12 px-4">
+        <div
+        class="relative bgimg flex flex-row min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0"
+      >
+           <div class="bg-blueGray-200  w-full px-4 lg:px-10 py-10 pt-0  lg:w-4/12">
+                <div class="w-full">
+                    <div class="relative w-full mb-3">
+                        <mat-form-field>
+                            <div>
+                                <mat-toolbar>
+                                <!-- Display files names  -->
+                                
+                                    <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+                            
+                                    <!-- Browse Button -->
+                                
+                                    <button mat-flat-button 
+                                        class="bg-red-800  text-white text-xs font-bold uppercase
+                                            rounded mr-2">
+                                        Parcourir
+                                    </button>
+                                </mat-toolbar>
+                            
+                                <!-- Fetch selected filed on change -->
+                            
+                                <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt1($event)" name="uploadFile" multiple 
+                                    accept="text/xml,.pdf,image/*" />
+
+                            </div>
+                        </mat-form-field>
+                        <!--<button mat-flat-button color="accent" (click)="loadDocx()">
+                            Afficher
+                        </button>-->
+                    </div>
+
+                    <div class="w-full px-4" >
+                        <div class="relative w-full mb-1">
+                            <mat-form-field class="" appearance="fill" [hidden] = "doc_in" >
+                                <mat-label>Document Chargé</mat-label>
+                                <mat-select [(ngModel)]="l_obj.name" (selectionChange)="onLoadDoc($event)" 
+                               
+                                name="img">
+                                <mat-option *ngFor="let pp of imgCollection1" [value]="pp.title" class="text-red-600">
+                                    <span [ngStyle]="{'color': getColor(pp.title)}">{{pp.title}}</span>
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+<!--
+                            <mat-form-field class="" appearance="outline" [hidden] = "image_in" >
+                                <mat-label>Type de document</mat-label>
+                                <mat-select [(ngModel)]="obj.type" (selectionChange)="onChangeTypeDoc($event)" 
+                                placeholder="Choisir un type de document" 
+                                name="type">
+                                <mat-option *ngFor="let p of types" [value]="p.name" >
+                                    {{p.title ? p.title : p.name}}
+                                </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        -->
+                        <!--<mat-form-field>
+                            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="searchTypes">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                              <ng-container *ngIf="!isLoading">
+                                <mat-option *ngFor="let p of types" [value]="p.name">
+                                  <span><b> {{p.title ? p.title : p.name}}</b></span>
+                                </mat-option>
+                              </ng-container>(onSelectionChange)="onChangeTypeDoc($event)"
+                            </mat-autocomplete>
+                          </mat-form-field> -->
+
+                          <form class="example-form">
+                             <mat-form-field class="" appearance="fill" [hidden] = "image_in">
+                              <mat-label>Type de document</mat-label>
+                            <input #stateInput (keyup)="0" matInput 
+                                      aria-label="State" [matAutocomplete]="auto" [formControl]="searchTypes">
+                              <mat-autocomplete #auto="matAutocomplete" >
+                                <mat-option (onSelectionChange)="onChangeTypeDoc($event)" style="font-size: 15px;" 
+                                        *ngFor="let p of filteredTypes | async" [value]="p.title">
+                                  <span>{{p.title}}</span>
+                                </mat-option>
+                              </mat-autocomplete>
+                            
+                            </mat-form-field> 
+                       <!--     
+                            <mat-card>
+                                <mat-form-field>
+                                  <mat-label>Type de document</mat-label>
+                                  <mat-select #countrySelect>
+                                    <mat-select-trigger>{{countrySelect.value}}</mat-select-trigger>
+                              
+                                    <mat-option>
+                                      <lib-mat-select-search
+                                        [list]="types"
+                                        [searchProperties]="['title']"
+                                        (filtered)="filteredCountries = $event">
+                                      </lib-mat-select-search>
+                                    </mat-option>
+                              
+                                    <mat-option *ngFor="let country of filteredCountries" [value]="country.name">
+                                      <div class="country-container">
+                                        <span>{{country.title}}</span>
+                                      </div>
+                                    </mat-option>
+                              
+                                  </mat-select>
+                                </mat-form-field>
+                              </mat-card>
+-->
+                            <button class="bg-orange-500 text-white" style="margin: 10px;border-radius: 50%;"   
+                                [hidden] = "true" mat-flat-button color="warning" (click)="autoDocx()">
+                                Auto
+                            </button>
+                           
+                         
+                          </form>
+                       
+                        </div>
+                    </div>
+                    <h4 [hidden] = "prop_in" class="text-blueGray-700 .text-xs font-bold title-imp">Renseigner les Proprietés</h4> <br>
+                    <div [hidden] = "prop_in" class="w-full bg-white px-4 custom-scroll-bar mt-1 flex-auto" >
+                        <!--<div class="relative w-full mb-1">-->
+                     
+                        <!--    <div class="flex wrap " *ngFor="let propertie of all_properties">-->
+                            <div class="flex wrap " *ngFor="let propriete of all_propriete">
+                                
+                                <!--<app-properties-form [properties]="propertie"></app-properties-form>-->
+
+                                <app-properties-form [properties]="propriete"></app-properties-form>
+            
+                            </div>
+                      
+                        <!--</div> -->
+                    </div>
+                     <!--<div class="bg-lightBlue-400 relative w-full mb-3">
+                        <div [hidden] = "valid_in" class="bg-red-200 w-full lg:w-3/12 flex justify-end m-1" >
+                        
+                                <button mat-raised-button color="primary"
+                            
+                                    (click)="clearDocx()" [disabled] = "prop_in" >
+                                Annuler
+                            </button>[hidden] = "valid_in"
+                        </div>-->
+                        <div  class="w-full lg:w-11/12 flex justify-end py-2 mt-2" >
+                            <button mat-raised-button color="warn" 
+                                class="ml-3" [hidden] = "prop_in"
+                                    (click)="clearDocx()" [disabled] = "prop_in" >
+                                Annuler
+                            </button>
+                            <!--<span>+{{charge}}</span> -->
+                            <button mat-raised-button color="primary" [matBadgeHidden]="hidden" class="ml-3" [hidden] = "prop_in || valid_in"
+                            [matBadge]="charge" matBadgePosition="before" matBadgeColor="accent"   
+                                (click)="attachDocx()" [disabled] = "prop_in" >
+                                Ajouter
+                            </button>
+                        </div>
+                     <!--</div>-->
+                
+                </div>
+              
+           </div>
+
+           <div class="w-full    px-4 pt-0 lg:w-10/12">
+                <!--<div class="md:w-9/12bgimg ">-->
+                    <div class="w-full flex justify-end m-1">
+                        
+                        <button
+                            class="bg-red-800 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150"
+                            type="button" 
+                            (click)="sendToFusion()" [hidden] = "instance"
+                        >
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        Fusion
+                        </button>
+
+                        <button
+                            class="bg-orange-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-2 ease-linear transition-all duration-150"
+                            type="button" 
+                            (click)="sendRToAcs()" [disabled] = "image_in" [hidden] = "!instance" 
+                        >
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        Envoyer
+                        </button>
+
+                    </div>
+                   <!--   <app-document-viewer [imageCollection] =flex-auto "imgCollection1">class="w-full bg-blueGray-900 flex content-center img-scroll-bar items-center pt-2 pb-2 justify-center h-full"</app-document-viewer>-->
+                   
+                  <div class="row bg-blueGray-600 h-full">     
+                       <div *ngFor = "let dataimage of imgCollection1"  [hidden] = "typepdf"
+                            class="block"><a id='anchor' [ngClass] = "imgCollection1.length > 1 ? 'show':'hidden'" class="text-white text-xs font-bold uppercase
+                            rounded mr-2" href = "#" (click)="onLoadDoc1(dataimage.title);">{{dataimage.title}}</a><img src="{{dataimage.image}}" width="500px"></div> 
+                            
+                        <div *ngFor = "let dataimage of imgCollection1" class="block" [hidden] = "!typepdf" >
+                                <pdf-viewer [src]="dataimage.image"
+                                    [zoom]="0.5" 
+                                    [autoresize] = "true" 
+                                ></pdf-viewer>
+                        </div> 
+                 </div>
+
+                
+            <!--    </div>-->
+           </div>
+
+      </div> 
+
+      <app-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value" [backdropEnabled]="true" [positionGloballyCenter]="true"
+ [displayProgressSpinner]="displayProgressSpinner">
+</app-progress-spinner>
+
+<!--
+<app-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value" [backdropEnabled]="false" [displayProgressSpinner]="spinnerWithoutBackdrop">
+</app-progress-spinner>-->
+
+
+
+   </div>
+   <!--<router-outlet></router-outlet>-->
+</div>

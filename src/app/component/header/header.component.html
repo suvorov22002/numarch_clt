@@ -1,0 +1,52 @@
+ <!--
+<div class="relative bg-gray-200 border-2 border-red-700 border-solid md:pt-0 pt-12 ">
+ 
+        <div class="flex nowrap justify-between">
+           <div class="w-full md:w-6/12 xl:w-3/12 py-2">
+          
+                <a
+                  [routerLink]="['/body']" 
+                >
+                    
+                    <img
+                  src="assets/images/logo_afb.png"
+                  class="bg-white rounded border"
+                  alt="..." width="300px"
+                />
+              </a>
+            </div>
+           
+            <div class="relative w-full md:w-6/12 text-right">
+            
+              <div class="bottom py-2 px-4">
+                <a
+                  [routerLink]="['/body/configs']" 
+                  [ngClass]="'text-blueGray-700 hover:text-blueGray-500 text-xs uppercase font-bold block'" 
+                  routerLinkActive 
+                >
+                  <i class="fa fa-gear ml-2 mr-0" style="font-size:24px"></i>
+                </a>
+          </div>
+            </div>
+        </div>
+  
+</div>
+ -->
+<nav class="header bg-gray-200 border-2 border-red-700 border-solid md:pt-0 pt-12">
+  <a routerLink="/" class="brand">
+      <img src="assets/images/logo_afb.png" alt="" width="300px">
+  </a>
+ 
+
+  <div class="flex-spacer"></div>
+  <button mat-button class="logout" routerLink="/body" >
+    <!--<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>-->
+    <i class="pi pi-home">pi-home</i>
+    Home</button>
+  <button mat-button routerLink="/configs">
+    <!--<mat-icon>settings</mat-icon>-->
+    <i class="pi pi-cog">pi-cog</i>
+    Configuration
+  </button>
+</nav>
+

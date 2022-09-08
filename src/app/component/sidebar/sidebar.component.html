@@ -1,0 +1,63 @@
+<!--
+<nav
+  class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-lightBlue-200 flex flex-wrap items-center m-1 justify-between relative md:w-64 z-10 py-4 px-6"
+>
+-->
+  <div
+    class="md:flex-col bg-blueGray-600 md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full "
+  >
+   
+    <!-- Collapse -->
+    <div
+      class="md:flex md:flex-col md:items-stretch md:opacity-100  md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center m-1 flex-1 rounded"
+     
+    >
+      <!-- Collapse header -->
+      <div
+        class="flex bg-white md:min-w-full block border-b border-solid border-blueGray-200 p-2"
+      >
+       
+
+        <div class="w-full  md:w-2/12 py-2">
+          <mat-label>Documents</mat-label>
+        </div>
+        <div class="w-full md:w-10/12">
+            <mat-form-field appearance="fill" class="multis">
+              <mat-select [formControl]="toppings" multiple [(value)]="fileName"  placeholder="Documents">
+                <mat-select-trigger >
+                  {{toppings.value ? toppings.value[0]: ''}}
+                  <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                    (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+
+      </div>
+<!--
+      <div class="w-full bg-white">
+            <app-document-folder></app-document-folder>
+      </div>-->
+       <!-- Divider -->
+       <hr class="md:min-w-full" />
+      <div class="w-full bg-white ">
+            <h6
+            class="text-black text-xs uppercase font-bold block pt-1 pb-4 no-underline pl-3"
+            >
+                Propriétés
+            </h6>
+           <app-document-property></app-document-property>
+            
+      </div>
+ 
+
+       <!-- Divider -->
+      <hr class="md:min-w-full" />
+    </div>
+  </div>
+  <!--
+</nav>
+-->

@@ -63,6 +63,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { RouteStrategy } from './service/helper/route-strategy';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { RobotComponent } from './component/robot/robot.component';
+import { RepriseComponent } from './component/reprise/reprise.component';
 
 
 
@@ -111,7 +112,8 @@ var SERVICES = [
     ViewDocumentComponent,
     MenuComponent,
     BodereauComponent,
-    RobotComponent
+    RobotComponent,
+    RepriseComponent
 
   ],
   imports: [

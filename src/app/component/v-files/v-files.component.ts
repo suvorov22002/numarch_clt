@@ -84,7 +84,7 @@ export class VFilesComponent implements OnInit {
 
   pdfSource =  "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
   typepdf:boolean = false;
-
+ 
   mergeimage : any;
   mergeimage2 : any;
   imageSource : any

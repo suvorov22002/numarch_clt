@@ -717,7 +717,7 @@ export class BodereauComponent implements OnInit {
           .subscribe(res => {
             this.allFileIn = res.ltrx;
           //  console.log("EXTRACT: "+this.allFileIn.length);
-
+ 
 
             this.extractor();
 
@@ -778,7 +778,7 @@ export class BodereauComponent implements OnInit {
           }
 
            
-         
+          
           this.fileAttr += element.name + ' - ';
           this.extension = element.name.substring(lastDot + 1);
 

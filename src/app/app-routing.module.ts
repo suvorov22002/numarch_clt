@@ -8,6 +8,7 @@ import { ListDocxComponent } from './component/list-docx/list-docx.component';
 import { LoginComponent } from './component/login/login.component';
 import { ParamsComponent } from './component/params/params.component';
 import { PropertiesComponent } from './component/properties/properties.component';
+import { RepriseComponent } from './component/reprise/reprise.component';
 import { RobotComponent } from './component/robot/robot.component';
 import { UrlComponent } from './component/url/url.component';
 
@@ -55,6 +56,11 @@ const routes: Routes = [
      //       only:['NUMARCH_PROCESS','NUMARCH_ADMIN']
      //     }
      //   }
+      },
+      {
+        path:'reprise',
+        component: RepriseComponent
+      
       },
       {
         path:"**",

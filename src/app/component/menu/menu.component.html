@@ -22,6 +22,12 @@
                         > Documents Classiques
                     </a>
                 </li>
+                <li *ngxPermissionsOnly="['NUMARCH_SIMPLE','NUMARCH_ADMIN']">
+                    <a [routerLink]="['/reprise']"
+                    routerLinkActive="active" 
+                        > Reprise des archives
+                    </a>
+                </li>
             </ul>
             
         </li>
